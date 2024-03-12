@@ -11,12 +11,15 @@ package br.edu.ifgoiano;
 import org.apache.jasper.runtime.ProtectedFunctionMapper;
 
 import javax.servlet.http.HttpServletRequest;
-	 
 public class ("/agora")
 	private static final long serialVersionUID =Agora
 			
 	@Override
-		protected void service
+		protected void service(httpServletrequest req, httpServelet)
+		Date data = new Date();
+	req.setatribute("datahora", data);
+	
+	req.getrequest
 		
 	
 }
