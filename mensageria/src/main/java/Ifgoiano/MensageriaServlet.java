@@ -19,6 +19,7 @@ public class MensageriaServlet extends HttpServlet {
         String tipoEnvio = request.getParameter("tipoEnvio");
 
         String mensagem = "";
+
         switch (tipoEnvio) {
             case "cumprimentoHorario":
                 mensagem = cumprimentoHorario(email, titulo, texto);
@@ -44,10 +45,21 @@ public class MensageriaServlet extends HttpServlet {
     }
 
     private String cumprimentoHorario(String email, String titulo, String texto) {
-        return "E-mail enviado para " + email + " com título: " + titulo + " e cumprimento conforme horário.";
+        int hora = java.time.LocalTime.now().getHour();
+        String cumprimento;
+
+        if (hora >= 5 && hora < 12) {
+            cumprimento = "Bom dia,";
+        } else if (hora >= 12 && hora < 19) {
+            cumprimento = "Boa tarde,";
+        } else {
+            cumprimento = "Boa noite,";
+        }
+
+        return "E-mail enviado para " + email + " com título: " + titulo + " e cumprimento: " + cumprimento;
     }
 
     private String emailAutomatico(String email, String titulo, String texto) {
-        return "E-mail automático enviado para " + email + " com título: " + titulo;
+        return "E-mail automático enviado para " + email + " com título: " + titulo + ". Atenção: esse é um e-mail automático e não deve ser respondido.";
     }
 }
